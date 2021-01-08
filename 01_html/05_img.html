@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image</title>
+</head>
+<body>
+    <h1>Image</h1>
+    
+    <!-- 상대주소는 현재파일기준을 대상파일을 찾는 주소-->
+    <!-- ./현재디렉토리(생략가능) ../부모디렉토리-->
+    <img src="./sample/image/hyunta.jpg" alt="대체문자:파일을 찾을수 없는 경우 표시될 문자">
+    <img src="./sample/image/hyuntaaaaaa.jpg" alt="시각적으로 확인을 못하는 경우, 이미지 설명 문자">
+
+    <br><br>
+    <!--절대주소로 이미지 참조-->
+    <!--C:\, /로 시작하는 주소 웹상의 이미지 주소 -->
+    <!--서버환경의 루트디렉토리(01_html)부터 대상파일을 찾는다-->
+    <img src="/sample/image/city1.PNG" alt="">
+    <br>
+    <img src="https://image.chosun.com/sitedata/image/202006/19/2020061904080_0.png" alt="코로나사진">
+
+    <!--
+        이미지 절대크기 px
+        이미지 상대크기 % - 화면너비대비 사이즈결정
+    
+    -->
+    <br><br>
+    <img src="./sample/image/forest1.PNG" style="width:150px;" alt="">
+    <br><br>
+    <img src="./sample/image/forest1.PNG" style="width:30%;" alt="">
+ 
+</body>
+</html>
