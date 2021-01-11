@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>종합실습문제2</title>
+</head>
+<body>
+    <form action="" method="GET">
+        <fieldset>
+            <legend>납품자 정보</legend>
+            <ol>
+                <li>
+                    <label for="username">납풍자명(필수) : </label>
+                    <input
+                        type="text" 
+                        id="userId" 
+                        name="userId"
+                        maxlength="10"
+                        style="width:100; height:15px;"
+                        required>
+                </li>
+                <br>
+                <li>
+                    <label for="email">email(필수) : </label>
+                    <input 
+                        type="email" 
+                        name="userEmail" 
+                        id="userEmail" 
+                        placeholder="answer@naver.com"
+                        required
+                        style="width:100; height:15px;"
+                        required>
+                </li>
+                <br>
+                <li>
+                    <label for="url">홈페이지 : </label>
+                    <input 
+                        type="url" 
+                        name="homepage" 
+                        id="homepage" 
+                        value="http://"
+                        style="width:100; height:15px;">
+                </li>
+                <br>
+                <li><div>
+                    <label for="location">지역 : </label>
+                    <select name="location" id="location">
+                        <option value="서울">서울</option>
+                        <option value="경기도">경기도</option>
+                        <option value="대전">대전</option>
+                        <option value="대구">대구</option>
+                        <option value="부산" selected>부산</option>
+                        <option value="제주도">제주도</option>
+                    </select>
+                </div>
+                </li>
+            </ol>
+        </fieldset>
+    </form>
+    <form action="">
+        <fieldset>
+            <legend>납품 정보</legend>
+            <ul>
+                <li>
+                    <label for="product">상품명(필수) : </label>
+                    <input
+                        type="text" 
+                        id="product" 
+                        name="product"
+                        maxlength="10"
+                        style="width:100; height:15px;"
+                        required>
+                    </li>
+                    <br>
+                <li>
+                    <label for="amount">납품수량(필수)</label>
+                    <input 
+                        type="number" 
+                        name="amount" 
+                        id="amount" 
+                        placeholder="최소100"
+                        min="100"
+                        style="width:100; height:15px;"
+                        required>
+                </li>
+                <br>
+                <li>
+                    <label for="level">납품등급(필수)</label>
+                    <input 
+                        type="range" 
+                        name="level" 
+                        id="level"
+                        min="0"
+                        step="1"
+                        required>
+                </li>
+                <br>
+                <li>
+                    <label for="meno">기타사항 : </label>
+                    <textarea name="memo" id="memo" 
+                    cols="60" rows="5" placeholder="메모"
+                    style="width:200px; height:40px;">
+                    </textarea>
+                </li>
+            </ul>
+        </fieldset>
+        <input type="submit" value="send message"
+                 style="background-color: rgb(199, 199, 199); width:60; height:20px;">
+    </form>
+</body>
+</html>
