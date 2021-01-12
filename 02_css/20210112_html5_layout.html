@@ -3,65 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>요구사항확인 모범답안</title>
+    <title>실습문제</title>
     <style>
-   body{
-        width: 1700px;
+    body{
+        width: 1200px;
         margin: 0 auto;
         padding: 0;
-    }   
+    }
     header{
-        margin: 0 auto;
-        height: 200px;
-        padding: 10px;
-    }
-    header > div>img{
-        width: 150px;
         height: 150px;
-        float: left;    
-    }
-    header > div>h1{
+        margin: 0 auto;
         text-align: center;
-        font-size: 40px;
     }
-    header>div>form{
-        float:right
+    header > div >img{
+        width: 120px;
+        height: 120px;
+        float: left;
+    }
+    header >div>h1{
+        display: inline;
+        line-height: 110px;
+    }
+    header>div>table{
+        float: right;
+        margin-top: 20px;
+    }
+    header > nav{
+        display: flex;
+        margin-top: 20px; /*section위 바로 안착*/
         
     }
     #menu {
         list-style: none; /* bullet 제거*/
-        margin-top: 95px;
         
+        margin: 0 auto;
     }
     #menu li {
         float: left;/* 가로배치*/
-        margin-right: 100px; /*글자 간격*/
-        padding: 3px 0; 
+        margin-right: 50px;
+        padding-right: 50px;
+                
     }
     #menu li a {
         text-decoration: none;/* 언더라인 제거 */
-        color: bule;
+        font-weight: bold;
+        color: blue;
+                
     }
     section{
         background-color: gray;
-        width: 1680px;
         height: 600px;
-        float:left;
+        width: 1200px;
+        float: left;
     }
-    section >h1{
-        text-align: left;
-        margin-block-start: 0;
-        margin-block-end: 0;
+    section > h1{
+        margin-top: 0px;
     }
     footer{
         background-color: skyblue;
         clear: both;
         height: 100px;
         padding: 10px;
-        text-align: center;
-        line-height: 100px; 
     }
-    footer >div >p{
+    footer > p{
+        text-align: center;
+        padding: 45px;
         margin: 0 auto;
     }
     </style>
@@ -69,20 +75,32 @@
 <body>
     <header>
         <div>
-        <img src="sample/kh.jpg" alt="kh">
+        <img src="sample/kh.jpg" alt="kh로고">
         <h1>MYMain</h1>
+        <table>
             <form action="" method="GET">
-                <label for="username">아이디 : </label>
-                <input type="text" id="username" name="user-name">
-            <br>
-                <label for ="password">패스워드 : </label>
-                <input type="password" id="password" name="password">
-            <br>
-                <input type="submit" value="로그인">
-                <input type="reset" value="취소">
+            <tr>
+                <td>
+                    <label for="userId">아이디 </label>
+                    <input type="text" name="userId" id="userId">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="userPw">패스워드 </label>
+                    <input type="text" name="userPw" id="userPw">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="로그인">
+                    <input type="reset" value="취소">
+                </td>
+            </tr>
             </form>
+        </table>
         </div>
-        <div>
+        <nav>
             <ul id="menu">
                 <li><a href="#">메인</a></li>
                 <li><a href="#">공지사항</a></li>
@@ -91,16 +109,13 @@
                 <li><a href="#">회원관리</a></li>
                 <li><a href="#">채팅하기</a></li>
             </ul>
-        </div>
+        </nav>
     </header>
     <section>
-            <h1>content 내용</h1>
+        <h1>content내용</h1>
     </section>
     <footer>
-        <div>
         <p>Copyright © 1998-2019 KH Information Educational Institute All Right Reserved</p>
-        </div>
     </footer>
-    
 </body>
 </html>
