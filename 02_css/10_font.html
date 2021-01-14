@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
+    <style>
+        /*브라우저한테 폰트 다운로드 지시*/
+     @font-face {
+    font-family: 'ELAND_Nice_M';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/ELAND_Nice_M.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}   
+    </style>
+</head>
+<body>
+    <h1>Font</h1>
+    <p>기본크기 : 16px(절대값), 1em(상대값), 100%(상대값)</p>
+    <ul>
+        <li>
+            <p id="font1">가나다라마바사 abcdefg 1234567890</p>
+        </li>
+        <li>
+            <p id="font2">가나다라마바사 abcdefg 1234567890</p>
+        </li>
+        <li>
+            <p id="font3">가나다라마바사 abcdefg 1234567890</p>
+        </li>
+    </ul>
+    <style>
+    body{
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+    }
+    #font1{
+        font-family: "홍길동체","휴먼모음T", "궁서체";
+        font-size: 30px;
+        font-weight: bold; /*100-900*/
+    }
+    #font2{
+        font-family: 'East Sea Dokdo', cursive;
+        font-size: 2em;
+        font-style: italic;
+    }
+    #font3{
+        /*font-family: 'Sofia', 'ELAND_NICE_M',cursive;
+        font-size: 150%;*/
+        font:italic 150% 'Sofia', 'ELAND_NICE_M',cursive;
+    }
+    </style>
+    
+</body>
+</html>

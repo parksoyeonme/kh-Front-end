@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text</title>
+</head>
+<body>
+    <h1>Text</h1>
+    <div class="wrapper">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas libero odit, quasi a, ullam repellat molestias vero soluta quia fugit rem explicabo consectetur debitis beatae eaque, dolorum natus aliquid autem!</p>
+        <p>Exercitationem repellat esse ipsam a, inventore ullam libero vel iusto reprehenderit fuga nostrum maxime in id cupiditate fugiat beatae perspiciatis ea placeat recusandae facere reiciendis natus sed. Vero, magnam asperiores!</p>
+        <p>Labore a aperiam quod, dolor perspiciatis obcaecati dicta excepturi, harum minus totam unde? Nam maiores iure repellat error distinctio asperiores delectus. Natus, nemo sapiente. Obcaecati ipsa voluptates nam voluptatibus eum?</p>
+        <p>Voluptatum dolor aliquam aspernatur eum sequi hic, nesciunt esse tenetur commodi quasi animi numquam sunt quos doloribus vero placeat dolorem alias asperiores quidem ullam tempora soluta accusantium voluptatem maiores? Magni!</p>
+        <p>Hic voluptatibus ipsam, eius ipsum quo mollitia laboriosam nemo, aperiam cupiditate, architecto deleniti illum voluptates amet iusto quod excepturi doloremque. Magni eligendi quae officia libero reprehenderit quidem impedit perferendis voluptates!</p>
+    </div>
+    <style>
+    .wrapper p::first-letter{
+        font-size: 2em;
+    }
+    /*counter*/
+    .wrapper{
+        counter-reset: num;/*카운터 변수*/
+    }
+    /*윈도우 점*/
+    .wrapper p::before{
+        counter-increment: num;
+        content: counter(num) ". ";
+    }
+    .wrapper p::after{
+        content:'😎';
+    }
+    .wrapper P::selection{
+        /*드래그하면 핑크색*/
+        background-color: hotpink;
+        color: white;
+    }
+    .wrapper p {
+        /*위아래 문단의 간격*/
+        line-height: 30px;
+    }
+
+    </style>
+</body>
+</html>

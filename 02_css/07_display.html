@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display</title>
+</head>
+<body>
+    <h1>display</h1>
+    <h2>block element</h2>
+    <p>inline-block일때는 block처럼 width/height값을 가지며, inline처럼 한줄에 배치된다</p>
+    <!--div.test.test${div$}*5-->
+    <div class="test test1 inline-block">div1</div>
+    <div class="test test2 inline-block">div2</div>
+    <div class="test test3 inline-block">div3</div>
+    <div class="test test4 inline-block">div4</div>
+    <div class="test test5 inline-block">div5</div>
+    <style>
+    .test{
+        width:200px;
+        height: 200px;
+        border: 1px solid black;
+    }
+    .test1{background-color: rebeccapurple}
+    .test2{background-color: plum;}
+    .test3{background-color: pink;}
+    .test4{background-color: salmon;}
+    .test5{background-color: wheat;}
+    
+    /*inline->block*/
+    .block{
+        display:block;
+    }
+    /*block-inline*/
+    .inline{
+        display: inline;
+    }
+    /*inline+ block*/
+    .inline-block{
+        display : inline-block;
+    }
+    </style>
+    
+
+    <h2>inline element</h2>
+    <p>width, height속성이 무시되고, 컨텐츠영역에 의해 결정된다.</p>
+    <span class="test test1 block">span1</span>
+    <span class="test test2 block">span2</span>
+    <span class="test test3 block">span3</span>
+    <span class="test test4 block">span4</span>
+    <span class="test test5 block">span5</span>
+
+    <h2>안보임처리</h2>
+    <ul>
+        <li>display : none</li>
+        <li>visibility: hidden</li>
+        <li>opacity: 0</li>
+    </ul>
+    <div class="test test1 not">test1</div>
+    <div class="test test2 impact">test2</div>
+    <style>
+    .not{
+        /*공간도 없이 안보이게*/
+        /*display: none;*/
+        /*공간만유지하고 안보인다*/
+        /*visibility: hidden;*/
+        /*흐릿하게*/
+        opacity: 0.3;
+    }
+    .impact{
+        opacity: .7;
+    }
+    /*클릭시 색이 진해짐*/
+    .impact:hover{
+        opacity: 1;
+    }
+    </style>
+</body>
+</html>
