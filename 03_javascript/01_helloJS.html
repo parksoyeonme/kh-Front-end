@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Javascript</title>
+    <!--외부js 파일을 실행-->
+    <script src="js/hello.js"></script>
+    <script>
+    //좋은 내부스크립트 작성위치1
+    //alert(12345);
+    /*
+    * 함수선언
+    */
+    function foo(){
+        console.log('hello~ console');
+    }
+    </script>
+</head>
+<body>
+    <h1>Hello Javascript</h1>
+    <p>mocha -> livescript -> javascript</p>
+    <p>event-driven, functional</p>
+    
+    <ol>
+        <li>
+            html태그에 event 관련inline 속성에 스크립트작성
+             <!-- js에서 문자열은 홑따옴표, 쌍따옴표 모두 허용 -->
+            <button type="button" onclick="alert('안녕');">클릭미</button>
+        </li>
+        <li>
+            문서내에 script태그 안 내부스크립트작성.
+            <button type="button" onclick="foo();">함수호출1</button>
+            &nbsp;&nbsp;
+            <button type="button" onclick="bar('ㅋㅋㅋ')">함수호출2</button>
+        </li>
+        <li>
+            외부스크립트를 작성하고, 현재문서에서 가져와 <span onmouseover="test();">실행</span>
+
+        </li>
+    </ol>
+
+    <h1>Data Type</h1>
+    <p>변수선언시 자료형이 정해지지 않고, 값대입시 자료형이 결정된다.</p>
+    <input type="button" value="실행" onclick="test1();">
+    <script>
+    function test1(){
+        var a; //자료형 정의되지 않음.
+        //console.log(a);//undefined
+
+        a = 100;
+       // console.log(a); //100
+       // console.log(typeof a); //number(정수/실수 구분하지 않고 nummber라 칭함)
+
+        a = '안녕';//'안녕' "안녕" 둘다가능
+       // console.log(a); //안녕
+       // console.log(typeof a); // String
+        
+       var userName = "홍길동";
+       var user_age = 30;
+       var married = true; //boolean
+       var weight = 60.45;
+    //    console.log("username = " + userName);
+    //    console.log("user_age = " + user_age);
+    //    console.log("married = " + married);
+    //    console.log("weight = " + weight);
+    //    console.log(typeof userName);
+    //    console.log(typeof user_age); //number
+    //    console.log(typeof married); //boolean
+    //    console.log(typeof weight); //number
+
+    var arr = ['a','b','c'];//배열표현식이 {}이 아닌 []이므로 주의, 자료형을 국한하지않음
+    var user ={
+        name : '홍길동',
+        age : 30,
+        id : 'hongged'
+    };
+    // console.log(arr);
+    // console.log(typeof arr);
+    // console.log(user);
+    // console.log(typeof user);
+
+    // console.log(arr[0]);
+    // console.log(arr[1]);
+    // console.log(arr[2]);
+    // console.log(arr.length);
+
+    // for(var i = 0; i <arr.length; i++){
+    //     console.log(arr[i]);
+    // }   
+
+    var func = bar; //함수를 값처럼 취급
+        console.log(func);
+        console.log(typeof func);//function
+        func('오마이갓');
+        
+
+    }
+    </script>
+
+
+
+<script>
+    //스크립트 작성 좋은 위치2
+    //html태그 해석이 모두 끝나서 1보다 더 좋다.
+    function bar(s){
+        console.log(s);
+    }
+    </script>
+</body>
+</html>
