@@ -89,7 +89,7 @@
                 result += chk.value + ' ';
             }
         }
-        alert(result);
+        alert(result); //새로운창에 뜨게나는것
     }
     </script>
 
@@ -108,12 +108,14 @@
                border: 1px solid #000"></div>
     <script>
     function test3(){
-        // var el = document.getElementsByName("userName")[0];
+        
+        //var el = document.getElementsByName("userName")[0];
+        //var el = document.getElementsByName("userName")[0];
         // var el = document.getElementById("userName");
         // console.log(el);
         // 비표준 id값을 변수로 선언하지 않고 사용가능.
         // var userName = document.getElementById("userName");
-        console.log(userName.value);
+       // console.log(userName.value);
 
         area1.innerHTML = userName.value
 
@@ -121,6 +123,7 @@
         userName.value = '';
         //포커스 처리
         userName.focus();
+
 
 
     }
@@ -201,7 +204,7 @@
         chkAll.checked = (cnt == subjects.length);
 
     }
-
+    //1.전체 체크박스
     function checkAllOrNone(chkAll){
         // var chkAll = document.getElementById("chkAll");
         var subjects = document.getElementsByName("subject");
@@ -217,10 +220,7 @@
 
     <p>@실습문제 : classList속성을 이용해서 코드를 개선하세요.</p>
 
-<br>
-<br>
-<br>
-<br>
+
 <br>
 </body>
 </html>

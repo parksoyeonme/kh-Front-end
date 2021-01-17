@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제1</title>
+    <style>
+        div#areal {
+            width: 400px;
+            height: 150px;
+            border: 1px solid black;
+            background-color: rgb(228, 228, 115);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>실습문제1</h1>
+    <form action="">
+        <label for="buyer">구매자 : </label>
+        <input type="text" id="buyer" name="buyer">
+        <br><br>
+
+        <label for="productName">상품명 : </label>
+        <input type="text" id="product" name="product">
+        <br><br>
+
+        <label for="price">가격 : </label>
+        <input type="number" id="price" name="price">
+        <span>만원</span>
+        <br><br>
+
+        <input type="button" value="입력값 출력하기" onclick="test1();">
+        <br><br>
+    </form>
+    <div id="areal"></div>
+
+    <script>
+        function test1(){
+            var info = "구입자 : " + document.getElementById('buyer').value + '<br>' +
+                    "구입상품 : " + document.getElementById('product').value + '<br>' + 
+                    "구매가격 : " + document.getElementById('price').value + "만원";
+                console.log(info);
+
+            var div = document.getElementById('areal').innerHTML=input;
+        }
+    </script>
+    
+</body>
+</html>
