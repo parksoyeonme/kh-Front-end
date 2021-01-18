@@ -59,11 +59,15 @@
     }
 
     function printProduct(){
-        var result = document.getElementById("result");
-        result.innerHTML += "상품명 : " + productName.value + "<br>";
-        result.innerHTML += "납품등급 : " + productLevel.value + "<br>";
-        result.innerHTML += "납품수량 : " + productAmount.value+ "<br>";
-        result.innerHTML += "기타사항 : " + message.value;
+        var bool = confirm("입력하시겠습니까?");
+        
+        if(bool){
+        result.innerHTML += "상품명 : " + productName.value + "<br>" +
+                            "납품등급 : " + productLevel.value + "<br>" +
+                            "납품수량 : " + productAmount.value+ "<br>" +
+                            "기타사항 : " + message.value;
+
+            }
     }
     </script>
 </body>
