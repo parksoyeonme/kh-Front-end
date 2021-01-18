@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+<body>
+    <h1>String</h1>
+    <input type="button" value="실행" onclick="test1();">
+    <script>
+    function test1(){
+      //js에서 '', ""로 감싸진 literal은 String객체이다.
+      var str = "Apple Samsung LG";
+      console.log("length : " + str.length);//함수 호출 아님.
+      console.log("UpperCase/LowerCase : " + str.toUpperCase() + " | " + str.toLowerCase());
+      console.log("indexOf : " + str.indexOf("un")); //10 해당인덱스의 위치
+      console.log("charAt : " + str.charAt(10));
+
+      //문자열 일부가져오기
+      //1. substring(stratIndex, endIndex)
+        console.log("substring : " + str.substring(6,13)); //Samsung
+      //2. substr(startIndex, length)
+      console.log("substr : " + str.substr(6,7)); //Samsung
+      console.log("substr : " + str.substr(6)); // 뒤에 안적으면 끝까지 다나온다.
+
+      //csv 토큰처리
+        var csv = "사과, 바나나, 복숭아, 키위";
+        var arr = csv.split(", ");
+        console.log(arr);
+        for(var i = 0; i < arr.length; i++){
+        console.log(arr[i]);
+        }
+
+      //사용자에게 영문이름을 입력받고(prompt) 받고, a 문자의 개수를 출력하세요.
+      //sinsaimdang -> a가 2개입니다.
+      //sejong -> a가 0개 입니다.
+
+    //   var name = prompt('영문이름을 입력하세요', '기본 값 문자열');
+    //   var cnt = 0;
+    //   for(var i =0; i < name.length; i ++){
+    //       if(name[i] == 'a')
+    //       cnt++;
+    //   }
+    //   console.log("a의 갯수 : " + cnt);
+    //   alert("a의 갯수 : " + cnt);
+    
+    //   var name = prompt("영문이름을 입력하세요.");
+
+    // if(name != null && name.length > 0){
+    // var cnt = countChar(name, 'a');
+    // console.log(name + " -> a가 " + cnt + "개입니다.");
+    
+    // }else {
+    //     console.log("영문이름이 유효하지 않습니다.");
+    // }
+
+    // }
+
+    // function countChar(str, ch){
+    //  str = str.toLowerCase(); // 모두 소문자로 처리후에
+    // var cnt = 0;
+    // for(var i = 0; i < str.length; i++){
+    //     if(str.charAt(i) == ch)
+    //         cnt++;
+    // }
+    //     return cnt; 
+
+
+    // }
+
+    }
+    </script>
+    
+    <h1>Math</h1>
+    <input type="button" value="실행" onclick="test2();">
+    <script>
+    function test2(){
+        var num = 123.456;
+        console.log("올림 : " + Math.ceil(num)); //124
+        console.log("버림 : " + (Math.floor(num *100)/100));  //123.45
+        console.log("반올림 : " + Math.round(num)); //123
+
+        console.log("난수 : " + Math.random()); //0.0(포함)~1.0(미포함)의 난수
+        //난수 * 경우의 수 + 최소값
+        console.log("1~10사이 난수 : " + Math.floor(Math.random()*10+1));
+        
+    }
+
+    </script>
+    <p>
+    @실습문제 : 순서있는 리스트요소 100개에 각각 1-100사이의 난수를 대입하고,
+    짝수 태그에만 배경색 지정하세요.
+    </p>
+    <script>
+    function test3() {
+        var arr = document.getElementsByTagName('li');
+        console.log(arr.length);
+        for(var i=0; i<arr.length; i++) {
+            arr[i].innerText = Math.round((Math.random() * 100 + 1));
+                if((arr[i].innerText)%2 == 0)
+                    arr[i].style.color = "orange";
+        }
+    }
+    </script>
+    <input type="button" value="실행" onclick="test3();">
+    <!-- ol#test-random>li*100 -->
+    <ol id="test-random">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+
+    <h1>Date</h1>
+    <input type="button" value="실행" onclick="test4();">
+    <script>
+    function test4(){
+        //날짜 시간관리 객체
+        var now = new Date();//현재시각 정보
+        console.log(now);
+        
+        var date1 = new Date("2020/10/28");
+        console.log(date1);
+
+        var date2 = new Date(2020, 9, 28, 20, 20); //달은 0~11 인덱스로 처리
+        console.log(date2);
+
+        dateFormat(now);
+
+    }
+    function dateFormat(d){
+        //2021/01/18(월) 14:00
+        //var s = d.getFullYear() + "/" + make2digit(d.getMonth()+1)+"/"+ make2digit(d.getDate());
+        var s = d.getFullYear() + "/" + (d.getMonth()+1).toString().padLdft(2, "0") +"/"+ make2digit(d.getDate());
+        alert(s);
+
+        //getDay - 일: 0 ~ 토:6
+        //getDay - 일:0 ~ 토:6
+        var dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+        s += "(" + dayOfWeek[d.getDay()] + ")";
+
+        s += make2digit(d.getHours()) + ":" + make2digit(d.getMinutes());
+
+        alert(s);
+
+         }
+
+
+    function make2digit(n){
+        return n < 10 ? "0" + n : n;
+
+    }
+    </script>
+
+    <input type="button" value="시간차 구하기" onclick="test5();">
+    <input type="button" value="실행시간 구하기" onclick="test6(foo);">
+    <script>
+    /*
+    * javascript에서 함수는 값(매개인자)처럼 취급.
+    */
+    function test6(f){
+    var start = new Date().getTime();
+    f();
+    var end = new Date().getTime();
+    var diff = end - start;
+    console.log(diff + "ms 걸렸습니다.");   
+    }
+
+function foo(){
+  for(var i = 0; i < 1000; i++){
+    console.log(i);
+  }
+}
+
+function test5(){
+  //밀리초단위로 환산후 차이를 구하고, 다시 초/분/시/일 단위로 변환
+  var start = new Date(2020, 9, 28);
+  var now = new Date();
+
+  var a = start.getTime();//밀리초 1970년1월1일 자정이후로 누적된 밀리초를 반환
+  var b = now.getTime();
+
+  var diff = Math.floor((b - a) / 1000 / 60 / 60 / 24);
+  alert("개강한지 " + diff + "일이 지났습니다.");
+}
+</script>
+
+
+</body>
+</html>
