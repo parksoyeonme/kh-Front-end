@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+    <h1>배열</h1>
+    <h2>배열 생성</h2>
+    <input type="button" value="실행" onclick="test1();">
+    <script>
+    /*
+    * 타입지정이 없고, 크기도 가변형이므로, 자바의 ArrayList<Object>와 비슷하다.
+    */
+    function test1(){
+        var arr1 = [1, 2, 3]; //초기화
+        var arr2 = new Array(1, 2, 3);
+
+        console.log(arr1);
+        console.log(arr2);
+        console.log(arr1[0]);
+        console.log(arr1[1]);
+        console.log(arr1[2]);
+
+        //요소추가
+        arr1[3] = 100;
+
+        //존재하지 않는 인덱스 참조
+        console.log(arr1[4]); //undefined
+
+        for(var i = 0; i < arr1.length; i++){
+            console.log(arr1[i]);
+        }
+
+    //for..in문
+    //배열을 순회하는 경우, 변수에는 index값이 담긴다.
+    for(var i in arr1){
+      // console.log(i);//0, 1, 2
+      console.log(arr1[i]);
+    }
+
+    var arr3 = [1, 2, 3, ['a','b','c']];
+
+    //해당속성 존재 여부 
+    for(var i in arr3){
+      if(!arr3[i].length)
+        console.log(arr3[i]);
+      else {
+        for(var j in arr3[i])
+          console.log(arr3[i][j]);
+      }
+
+    }
+
+    // for(var i = 0; i <arr3.length; i++){
+    //             console.log("arr3[i] : "+arr3[i]);
+    //             for(var j = 0; j<arr3[i].length;j++){
+    //                 console.log("arr3[i][j] : "+arr3[i][j]);
+    //             }
+    //         }
+
+    console.log(arr3[3][1]);
+
+  }
+    </script>
+    <h2>일반배열 | 유사배열</h2>
+    <input type="button" value="실행" onclick="test2();">
+    <script>
+    /**
+    * 일반배열(찐) : Array를 상속한 배열객체
+    * 유사배열(짜가) : Array를 상속하지 않은 배열객체. index, length속성외의 Array메소드 사용불가
+    *                 for..in문 사용불가
+    */
+    function test2(){
+      var arr1 = ['a', 'b', 'c'];
+      var arr2 = document.getElementsByTagName("input");
+
+      console.log(arr1);
+      console.log(arr2);
+
+         //Array의 메소드 join
+        console.log(arr1.join()); //a,b,c
+        //console.log(arr2.join());//사용불가 Uncaught TypeError
+
+    }
+    </script> 
+
+    <h2>Array 메소드</h2>
+    <input type="button" value="indexOF" onclick="test3();">
+    <input type="button" value="concat" onclick="test4();">
+    <input type="button" value="join" onclick="test5();">
+    <input type="button" value="reverse" onclick="test6();">
+    <input type="button" value="sort" onclick="test7();">
+    <input type="button" value="push | pop | unshift | shift" onclick="test8();">
+    <input type="button" value="slice" onclick="test9();">
+    <input type="button" value="splice" onclick="test10();">
+    <input type="button" value="toString" onclick="test11();">
+    <input type="button" value="forEach" onclick="test12();">
+    <script>
+    /**
+    * forEach(function()) : 매 요소마다 실행할 callback 함수를 인자로 전달함.
+    */ 
+    function test12(){
+        var arr = ['a', 'b', 'c'];
+        var copy = [];
+       
+        //배열의 매요소가 item매개변수에 전달된다.
+    //func('a'), func('b'), func('c')
+    arr.forEach(function(item, index){
+      console.log(index + " : " + item);
+      copy.push(item);
+    });
+
+        console.log(copy);
+
+      }
+    /*
+    *toString : Object최상위클래스의 메소드. 자식객체들은 이를 상소받아 사용할수있다.  
+    *            객체가 문자열로써 표현될때 자동으로 호출됨
+    */
+    function test11(){
+        var arr = new Array("홍길동", "신사임당", "세종대왕", "윤봉길");
+        console.log(arr);
+        console.log("arr = " + arr); //아래와 같은결과
+        console.log("arr = " + arr.toString()); //arr = 홍길동,신사임당,세종대왕,윤봉길
+        
+    }
+    /*
+    * splice(startIndex[, deleteCount[, item1, item2, ....]]) : 요소제거 및 삽입
+    *                                       가변인자라 몇개를 써도 괜찮다
+    *       startIndex : 요소제거 및 삽입 인덱스
+    *       deleteCount : 제거할 요소 개수
+    *       item1...: 추가할 요소
+    * 원본배열 변경, 제거된 요소가 배열로 리턴
+    */
+    function test10(){
+        var arr = ['a', 'b', 'c'];
+        arr.splice(1,1,'x','y','z');//["a", "x", "y", "z", "c"]
+        //1번지에 1개 지우고 xyz 넣어라
+        arr.splice(1,3,'k','h'); //[a,k,h,c] 1번지에 3개를 지우고 kh 추가
+        arr.splice(3,0,'i','j'); //삭제할 요소 0개["a", "k", "h", "i", "j", "c"]
+        arr.splice(3);//3번지이후 모두 제거 ["a", "k", "h"]
+        console.log(arr); 
+    }
+    /*
+    * slice(startIndex, startIndex): 배열요소 일부를 가져와서 새 배열로 리턴
+    *       startIndex : inclusive
+    *       startIndex : exclusive. 생략시 배열 마지막 인덱스까지 가져온다
+    */
+    function test9(){
+        var arr = ['html5', 'css3', 'javascript6'];
+        var another = arr.slice(1,3); //css js
+        var another = arr.slice(1); //css js
+        var another = arr.slice(); //전체
+
+        console.log(another);
+
+    }
+    /**
+    * push : 배열 마지막 인덱스에 요소추가후 변경된 길이를 리턴
+    * pop : 배열 마지막 인덱스의 요소를 제거하고, 제거된 요소를 리턴
+    * unshift : 배열 0번지에 요소추가후 변경된 길이를 리턴
+    * shift : 배열 0번지 요소를 제거한후, 제거된 요소를 리턴
+    *
+    * 원본 배열 변경 
+    */
+    function test8(){
+        var arr = new Array();
+        arr.push(1);
+        arr.push(2);
+        arr.push(3);
+        var removeItem = arr.pop();
+        console.log(removeItem); //3
+
+        arr.unshift("a");
+        arr.unshift("b");
+        arr.unshift("c");
+        removeItem = arr.shift();
+        console.log(removeItem); //c
+       
+        console.log(arr); //["c", "b", "a", 1, 2]
+        
+
+    }
+    /*
+    * sort 오름차순(기본값), 내림차순 정렬, 원본배열 수정
+    */
+    function test7(){
+        var arr = [3,2,4,5,1];
+        console.log(arr.sort()); //[1, 2, 3, 4, 5]
+        console.log(arr); //[1, 2, 3, 4, 5]
+
+    //내림차순 : 정렬기준 함수
+    //음수 | 0 | 양수
+    arr.sort(function(a, b){
+      return b - a;
+    });
+    console.log(arr); //[5, 4, 3, 2, 1]
+
+    //문자열 오름차순 : 사전등재순
+    var names = ['홍길동', ' 김영미', '사오리'];
+    names.sort();
+    console.log(names); //[" 김영미", "사오리", "홍길동"]
+
+    //문자열 내림차순: 정렬기준함수
+    //문자열간에는 - 연산 불가. 크기비교연산 가능.
+    console.log('홍길동' - '김영미'); //NaN
+    console.log('홍길동' > '김영미'); //true
+   
+    names.sort(function(a, b){
+        if(a > b) return -1; //자리교환
+        if(b > a) return 1;
+        return 0;
+
+    });
+    console.log(names); //["홍길동", "사오리", " 김영미"]
+
+    }
+    /*
+    * reverse : 원본배열 변경,단순자리 변경해주는것,정렬x
+    */
+    function test6(){
+    var arr = ['e','d','c','b','a'];
+    console.log(arr.reverse()); //["a", "b", "c", "d", "e"] 순서뒤집기
+    console.log(arr); //["a", "b", "c", "d", "e"
+    }
+    /**
+    * join : 제공된 구분자를 기준으로 요소를 합쳐서 문자열로 리턴
+    */
+    function test5(){
+    var arr = [1,2,3,4,5];
+    var s = arr.join("-"); //기본구분자 , (콤마)
+    console.log(s); //1-2-3-4-5
+    console.log(typeof s); //string
+    }
+
+    /*
+    *concat : 두배열의 요소를 합쳐서 하나의 배열로 리턴.
+    */
+    function test4(){
+    var arr1 = ['a','b','c'];
+    var arr2 = new Array(1,2,3,4,5);
+    var arr3 = arr1.concat(arr2); //["a", "b", "c", 1, 2, 3, 4, 5]
+
+
+    console.log(arr1);
+    console.log(arr2);
+    console.log(arr3);
+  }
+    /*
+    * indexOf
+    */
+    function test3(){
+    var arr = ['apple', 'strawberry', 'melon', 'banana', 'melon'];
+    var idx = arr.indexOf('melon');//2
+    var idx = arr.indexOf('watermelon');//-1없으니깐
+    var idx = arr.lastIndexOf('melon');//4
+    console.log(idx);
+  }
+    </script>
+
+    <p>
+    @실습문제 : 사용자부터 좋아하는 음식을
+    ,(콤마)구분자로 하나의 문자열을 입력받은 후, 가나다 순 정렬하고 html li 태그에 출력하세요
+    예) 떡볶이, 피자, 참치회, 파전, 김치찌게
+    </p>
+    <input type="button" value="실행" onclick="test13();">
+    <ol id="result"></ol>
+    <script>
+    function test13() {
+            var input = prompt("좋아하는 음식을 입력해주세요.(,로 구분)");
+            input = input.replace(/ /g, "");//공백제거
+            var arr = input.split(",");
+            arr.sort();
+            var ol = document.getElementById("result");
+            ol.innerHTML = "";
+            arr.forEach(function(item) {
+                ol.innerHTML += "<li>" + item + "</li>";
+            });
+        }
+
+    function test13(){
+    var foods = prompt("좋아하는 음식을 입력하세요. 예)참치회, 초밥, 아구찜, 떡뽁이");
+
+    if(!foods) {
+      alert("입력값이 유효하지 않습니다.");
+      return;//조기리턴
+    }	  
+
+    var arr = foods.split(", ");
+    arr.sort();//정렬
+    // console.log(arr);
+
+    var result = document.querySelector("#result");
+
+    arr.forEach(function(food, idx){
+      result.innerHTML += "<li>" + food + "</li>";		
+    });	  
+
+  }
+    </script>
+    
+</body>
+</html>
