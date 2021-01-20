@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@실습문제_객체배열 </title>
+  <style>
+  img {
+    width: 500px;
+    margin: 10px 0;
+  }
+  </style>
+</head>
+<body>
+    <h1>학생 객체 관리</h1>
+    <img src="images/실습문제_객체_성적테이블.png" alt="">
+    <input type="button" value="실행1" onclick="test1();">
+    <input type="button" value="실행2" onclick="test2();">
+    <script>
+    /**
+     * 생성자 함수 이용버전
+     * (공통된 코드는 prototype객체를 이용할 것)
+    */
+   function test2(){
+       var arr = [
+           new Student("김동현",90,56,56,45,34),
+           new Student("홍길동",45,76,34,33,56),
+           new Student("유관순",76,34,54,56,22)
+       ];
+
+       for(var i in arr)
+            console.log(arr[i]);
+
+    function Student(name, java, oracle, html5, css3, javascript){
+        this.name = name;
+        this.java = java;
+        this.oracle = oracle;
+        this.html5 = html5;
+        this.css3 = css3;
+        this.javascript = javascript;
+    };
+    Student.prototype.sum = function(){
+        return this.java + this.oracle + this.html5 + this.css3 + this.javascript;
+
+    };
+    Student.prototype.avg = function(){
+        return Math.round(this.sum() / 5 * 10) / 10;
+    };
+
+    Student.prototype.toString = function(){
+        return "{이름 = " + this.name + ", java = " + this.java + 
+                ", oracle =" + this.oracle + ", html5 = " + this.html5 + 
+                ", css3 = " + this.css3 + ", javascript = " + this.javascript + 
+                ", 총점 = " + this.sum + ", 평균 = " + this.avg + "}";
+    };
+    
+
+   }
+    /**
+     * 주어진 정보(3명)의 점수, 총점, 평균(반올림 소수점첫째자리)을 출력.
+     */ 
+    function test1(){
+        var student1 = {
+            name: '김동현',
+            java: 90,
+            oracle: 56,
+            html5: 56,
+            css3: 44,
+            javascript:  34
+        };
+        var student2 = {
+            name: '홍길동',
+            java: 45,
+            oracle: 76,
+            html5: 34,
+            css3: 33,
+            javascript:  56
+        };
+        var student3 = {
+            name: '유관순',
+            java: 76,
+            oracle: 34,
+            html5: 54,
+            css3: 56,
+            javascript:  22
+        };
+        var arr = [];
+        arr.push(student1);
+        arr.push(student2);
+        arr.push(student3);
+  
+        for(var i in arr) {
+            arr[i].sum = arr[i].java + arr[i].oracle + arr[i].html5 + arr[i].css3 + arr[i].javascript;
+            arr[i].avg = arr[i].sum/5;
+
+        arr[i].toString = function() {
+                return "{이름 = " + this.name + ", java = " + this.java + 
+                        ", oracle =" + this.oracle + ", html5 = " + this.html5 + 
+                        ", css3 = " + this.css3 + ", javascript = " + this.javascript + 
+                        ", 총점 = " + this.sum + ", 평균 = " + this.avg + "}";
+            }
+        }
+        for(var i in arr)
+            console.log(i + " : " + arr[i]);
+
+        console.log(arr);
+    }
+    </script>
+
+   
+</body>
+</html>

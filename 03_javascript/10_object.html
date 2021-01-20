@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+<body>
+    <h1>Object</h1>
+    <h2>객체생성 및 속성지정</h2>
+    <input type="button" value="실행 {}" onclick="test1();">
+    <input type="button" value="실행 new Object()" onclick="test2();">
+    <script>
+    /**
+    * new연산자를 사용해서 객체 생성 
+    */
+    function test2(){
+        var person = new Object();
+        person.name = '홍길동';
+        person.age = 30;
+       // person.family-name = '홍'; //객체의 속성명에 공백,특수문자가 있다면, 객체접근연산자(.)로는 접근 불가
+        person['family-name'] = '홍';
+
+        //속성 삭제
+       // delete person.age;
+
+       var name ='ㅋㅋㅋ';
+       //getter
+        console.log(person.name); //홍길동
+        //속성명을 반드시 문자열로 전달
+        console.log(person['name']); //홍길동
+        console.log(person[name]); //undefined name은 식별자 변수라서
+        //person['ㅋㅋㅋ'] -> undefined
+        console.log(person['family-name']);
+        console.log(person);
+    }
+    var product;//전역변수
+    /**
+    * object는 속성 : 속성값으로 이루어진 요소를 개수제한 없이 가질 수 있다.
+    *   속성: 문자열 또는 식별자 사용가능
+    *   속성값: 모든 자료형 가능 
+    */
+    function test1(){
+        //var product
+         product = {
+            name : '말린망고',
+            amout : 10,
+            ingredient : ['망고', '설탕'], //boolean등 아무거나 올수다
+            recipe : {
+                duration : 5,
+                food : "망고 사라다"
+            },
+            eat : function(){
+                console.log("맛있습니다.");
+            },
+            "make-date" : new Date()
+        };
+        console.log(product); // {name: "말린망고", amout: 10, ingredient: Array(2)}
+        console.log(typeof product); //object
+
+        console.log(product.name);
+        console.log(product.amount);
+        console.log(product.ingredient[0]);
+        console.log(product.ingredient[1]);
+        console.log(product.recipe.duration);
+        console.log(product.recipe.food);
+        console.log(product.eat);//function(){ console.log("맛있습니다."); }
+        console.log(product.eat());//맛있습니다. undefined
+        product.eat(); //이미 함수식이기 때문에
+        
+    }
+    </script>
+
+    <h2>메소드</h2>
+    <input type="button" value="실행" onclick="test3();">
+    <script>
+    /**
+    * 함수중에 객체의 속성은 메소드라고 한다. 
+    * 
+    * 현재객체의 다른 속성을 참조하려면, this키워드와 함께 사용할 것
+    */
+    function test3(){
+    var dogName = '영삼이';
+
+    var dog = {
+        dogName : '복실이',
+        eat : function(food){
+          //dogName변수를 현재객체가 아닌 지역변수/전역변수(window객체속성)에서 찾게되고, 속성이 없으므로 ReferenceError오류가 발생!
+          //객체안에서 this는 현재객체를 가리킨다.
+          console.log(this.dogName + "가 " + food + "를 냠냠 먹습니다.");
+        }
+    };
+
+    dog.eat('닭갈비');
+    dog['eat']('등갈비');
+    }
+
+    </script>
+     <h2>객체 속성 열람</h2>
+     <input type="button" value="실행" onclick="test4();">
+     <script>
+     /**
+      * 일반for문이 아닌 for..in문을 사용하면, 모든 속성을 열람할 수 있다.
+      */ 
+     function test4(){
+         var obj = {
+             name : '홍길동',
+             age: 30,
+             married : true,
+             say : function(){
+                 console.log("안녕하세요~" + this.name + "입니다.");
+             }
+         };
+         
+         //for..in문
+         //1.배열 : 변수에 인덱스 전달
+         //2.객체 : 변수에 속성명(key)가 전달
+         for(var k in obj){
+        console.log(k + " = " + obj[k]);//obj[k]의 k에는 속성값이 문자열로 전달
+        //실행한게 나오는게 아니라 문자열로 받아온거 그 자체가 나오는거
+        };
+     } 
+     </script>
+
+</body>
+</html>

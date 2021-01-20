@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+    <script>
+    /*
+    *window.onload이벤트
+    * 페이지내에 모든 html태그에 대한 DOM등록이 완료된 시점에 load이벤트 발생
+    * 그래서 눈에 안보일지라도 좀 늦게 출력된다.
+    */
+    window.onload = function(){
+    //함수표현식으로 작성된 함수호출!
+        bar();
+    };
+    
+    </script>
+</head>
+<body>
+    <h1>Function</h1>
+    <h2>함수선언 | 함수표현</h2>
+    <script>
+    foo(); //함수선언 전에 호출가능
+    /**
+    *함수선언 Function Declaration
+    *hoisting 대상 
+    */
+    function foo(){
+        console.log("foo호출!");
+    }
+
+    //아래에서는 사용가능하지만 위에서는 사용불가
+    //bar();//Uncaught TypeError
+    /*
+    * 함수표현식 Function Expression
+    * 함수자체는 hoisting되지 않아 미리 호출불가!
+    */
+    var bar = function(){
+        console.log("bar 호출!");
+    }
+    bar();
+
+    </script>
+
+    <h2>즉시실행함수</h2>
+    <script>
+    /*
+    * IIFE
+    * Immediately Invoked Function Expression
+    * 함수 선언과 실행을 동시에 처리
+    */
+   (function(){
+        console.log("iife type1 호출!")
+   })();
+
+   (function(){
+       console.log("iife type2 호출!")
+   }());
+
+   /**
+   * 매개변수 전달가능
+   */
+   (function(a){
+       console.log("iife type2 호출!" + a)
+   }(100));
+
+    </script>
+
+    <h2>함수의 매개변수 | 매개인자</h2>
+    <input type="button" value="test1()" onclick="test1();">
+    <input type="button" value="test1(3)" onclick="test1(3);">
+    <input type="button" value="test1(3,7)" onclick="test1(3,7);">
+    <input type="button" value="test1(3,7,10)" onclick="test1(3,7,10);">
+    <script>
+    /**
+     * 변수는 공간 인자는 값
+     * 매개변수 parameter: 함수선언부에 값(매개인자)이 전달된 공간
+     * 매개인자 argument: 함수호출부에 전달되는 값
+     * 
+     * 자바스크립트에서는 선언부(매개변수)와 호출부(매개인자)가 일치하지 않아도 오류가 발생하지 않는다.
+     */ 
+    function test1(a, b){
+        console.log("a = " + a);
+        console.log("b = " + b);
+
+        //숨겨진 참조 arguments 매개인자를 유사배열로 가지고 있다.
+       // console.log(arguments); //우리가 선언하지않아도 가지고있다.
+       for(var i = 0; i < arguments.length; i++){
+           console.log(i + " : " + arguments[i]);
+       }
+    }
+    </script>
+
+    <h2>값으로써의 함수</h2>
+    <input type="button" value="매개인자" onclick="test2(foo);">
+    <input type="button" value="리턴값" onclick="test3();">
+    <script>
+    /*
+    * 함수를 리턴할 수 있다.
+    */
+    function test3(){
+        var f = koo();
+        console.log(f);//function(){ console.log("hello~"); };
+        console.log(typeof f);//function
+        f('honggd');//hello~honggd
+
+        //var f = koo(function(){
+        //console.log("hello~");); 이거랑 같은
+    //  function test3(){
+    //     var f = koo();
+    //        f('honggd');// -> (koo())('hongged') 두줄합칠 수 있음    
+        (koo())('sinsa');
+        (function(name){
+        console.log("hello~" + name);
+        })('sejong');
+    }
+
+    
+    function koo(){
+        return function(name){
+      console.log("hello~" + name);
+    };
+        //koo롤 호출하면 리턴된 결과가 f에 담긴다.
+        //그럼 koo라는 애는 뭐르 리턴했냐 함수를 리턴했다는뜻
+    }
+    /*
+    * 함수는 매개인자로 가능하다.
+    */
+    function test2(f){
+        console.log(f);//function foo(){console.log("foo 호출!");}
+        console.log(typeof f);//function
+
+        for(var i =0; i < 100; i++)
+        f();//foo호출!
+    }
+    </script>
+
+</body>
+</html>
