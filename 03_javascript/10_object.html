@@ -87,7 +87,8 @@
         eat : function(food){
           //dogName변수를 현재객체가 아닌 지역변수/전역변수(window객체속성)에서 찾게되고, 속성이 없으므로 ReferenceError오류가 발생!
           //객체안에서 this는 현재객체를 가리킨다.
-          console.log(this.dogName + "가 " + food + "를 냠냠 먹습니다.");
+          console.log(dogName + "가 " + food + "를 냠냠 먹습니다."); //  전역변수를 찾아서 영삼이
+          // console.log(this.dogName + "가 " + food + "를 냠냠 먹습니다."); // this가 현재객체를 찾아서 복실이!
         }
     };
 

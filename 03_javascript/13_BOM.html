@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+</head>
+<body>
+    <h1>BOM</h1>
+    <p>Browser Object Model</p>
+    <h2>navigator</h2>
+    <input type="button" value="실행" onclick="test1();">
+    <script>
+    /**
+     * navigator : browser/os에 대한 정보
+     * 
+     * navigator.userAgent : browser를 식별할 수 있는 코드값
+     * 여러 브라우져의 히스토리가 나열
+     * 
+    */
+   function test1(){
+       console.log(navigator);
+   }
+    </script>
+    <h2>location</h2>
+    <input type="button" value="실행" onclick="test2();">
+    <script>
+    /**
+     * location 브라우져의 주소창 관련 정보
+     * href 속성을 고치면 페이지 이동도 만들 수 있다
+    */
+    function test2(){
+        console.log(location);
+        //페이지 이동
+       // location.href = "http://naver.com";
+
+       //새로고침
+       location.reload();
+    }
+    </script>
+
+    <h2>history</h2>
+    <input type="button" value="실행" onclick="test3();">
+    <input type="button" value="back" onclick="history.back();"> //뒤로가기
+    <input type="button" value="forward" onclick="history.forward();"> //앞으로가기
+    <script>
+    /**
+     * history 브라우져 방문기록을 관리
+    */
+    function test3(){
+        console.log(history);
+
+    }
+    </script>
+
+    <h2>screen</h2>
+    <input type="button" value="실행" onclick="test4();">
+    <script>
+    /**
+     *  screen 브라우져의 viewport가 아니라, 현재 이용중인 모니터(HW)에 대한 정보 제공
+    */
+    function test4(){
+        console.log(screen);
+
+        //r가운데로
+        var width=300; //새창만들 크기
+        var height = 300;
+        //새창이 나올 위치
+        var left = (screen.width - width) /2; //듀얼모니터사용시 + screen.availLeft ;
+        var top = (screen.availHeight -height) /2;
+        //screen.availHeight 실제가동 높이 
+        open(
+            "http://naver.com", 
+            "popup",
+            "width=" + width + " , height=" + height + ", top=" + top + ", left=" + left
+            );
+    }
+    </script>
+</body>
+</html>

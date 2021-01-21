@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window</title>
+</head>
+<body>
+    <h1>Window</h1>
+    <img src="images/windowObjects.png" alt="" style="width:500px; margin: 10px 0;">
+    
+    <h2>Window 메소드</h2>
+    <input type="button" value="alert" onclick="alert('안녕');">
+    <!--alert 메소드 -> 객체에 속한-->
+    <input type="button" value="open" onclick="test1();">
+    <input type="button" value="setTimeout" onclick="test2();">
+    <input type="button" value="setInterval" onclick="test3();" this.onclick = null;>
+    <div id="clock"><h3></h3></div>
+    <script>
+    /**
+     * window.setInterval(callbackFunction, millis) : number
+     *    millis간격으로 callbackFunction실행
+     *    intervalId를 리턴
+     *     비동기방식처리. millis에 오차가 있을 수 있다
+     * 
+     * window.clearInterval(intervalId)
+     *  해당 intervalId를 중지
+     */
+    function test3(){
+        var clockContainer = document.querySelector("#clock h3");
+        var cnt = 0;
+
+        var intervalId = setInterval(function(){
+        // clockContainer.innerHTML = cnt++;
+        // if(cnt > 10) { //카운트 10번까지만
+        //   clearInterval(intervalId);
+        // }
+        
+        //10:31:30
+        var now = new Date();
+        var s = now.getHours().toString().padStart(2, 0) + " : "
+                + now.getMinutes().toString().padStart(2, 0) + " : "
+                + now.getSeconds().toString().padStart(2, 0);
+        clockContainer.innerHTML = s;  //1000줘서 1초있다가 시작
+
+        }, 1000);
+
+        console.log("intervalId = " + intervalId);// 인터벌 아이디 주는것
+    }
+    /**
+     * window.setTimeout(callbackFuction, millis)
+     *    millis이후 callbackFunction 실행!
+     */ 
+    function test2(){
+        setTimeout(function(){
+        alert("저희 사이트를 방문해 주셔서 감사합니다")
+        }, 1000); // 1초후에 저 alert를 실행해주세요
+    } 
+    /**
+     * window.open(url, name, specs)
+     * 팝업창 또는 새탭을 여는 메소드
+     * url : 접속 경로
+     * name : 새 창의 이름. window객체의 name속성값
+     * spece: 기타설정을 문자열 형태로 전달
+    */
+    function test1(){
+        //open("http://www.naver.com", "naver", "width=500, height=300, top=300, left=200");
+       // open("index.html","index");//spece파라미터(매개변수) 생략시
+       //새로열린 탭 또는 팝업창의  window객체를 리턴
+       var popup = open("", "popup", "width=500, height=300, top=300, left=200");
+        console.log(popup);
+        popup.document.write("<h1>안녕<h1>"); //새팝업창 안에 글써짐
+        popup.alert("hello!"); //새팝업창+ 팝업창
+        
+        //3초 후에 콜백함수를 실행해주세요
+        setTimeout(function(){
+            //팝업창 window객체 이름을 찾기
+           // open("http://google.com", "popup");
+          
+           //창닫기
+           popup.close();
+        },3000);
+    }
+
+    </script>
+
+</body>
+</html>
+</body>
+</html>
