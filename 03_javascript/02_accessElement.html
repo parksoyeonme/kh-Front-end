@@ -32,9 +32,9 @@
         // console.log(arr);
         // console.log(typeof arr);
 
-        // for(var i = 0; i < arr.length; i++){
+        //  for(var i = 0; i < arr.length; i++){
         //     arr[i].innerHTML = "으라차차" + (i + 1);
-        //     console.log(arr[i].innerHTML);//태그내부 html을 반환
+        //      console.log(arr[i].innerHTML);//태그내부 html을 반환
         // }
 
         //3. 클래스명으로 접근
@@ -80,7 +80,7 @@
         console.log(hobbyArr);
         console.log(typeof hobbyArr);
 
-        var result = '';
+        var result = ''; //''빈공간
         for(var i = 0; i < hobbyArr.length; i++){
             var chk = hobbyArr[i];
             if(chk.checked){
@@ -125,6 +125,7 @@
         userName.focus();
 
 
+        
 
     }
     </script>
@@ -136,8 +137,9 @@
     </form>
     <script>
     function test4(){
-        var pointCheck = document.getElementById("pointCheck");
         var point = document.getElementById("point");
+        var pointCheck = document.getElementById("pointCheck");
+        
         pointCheck.innerHTML = point.value;
     }
     </script>

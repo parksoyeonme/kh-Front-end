@@ -271,6 +271,7 @@
     function test13() {
             var input = prompt("좋아하는 음식을 입력해주세요.(,로 구분)");
             input = input.replace(/ /g, "");//공백제거
+            //replace 제일처음만 변경할뿐
             var arr = input.split(",");
             arr.sort();
             var ol = document.getElementById("result");

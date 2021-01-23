@@ -89,6 +89,8 @@
             e.target.value = '';
         }
     }
+    //첫번째 방법에서는 this 사용 ㄴㄴ(인라인 속성으로 핸들러를 호출한 경우, this는  이벤트타겟이 아님 -> this = window)
+        // 두번째 , 새번째 방법에서는  this가 target을 가리킴. this -> e.target
     /**
      * event객체
      *    event handler함수가 호출될때 

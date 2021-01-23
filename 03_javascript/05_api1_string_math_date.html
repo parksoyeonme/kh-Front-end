@@ -229,6 +229,7 @@
         //2021/01/18(월) 14:00
         //var s = d.getFullYear() + "/" + make2digit(d.getMonth()+1)+"/"+ make2digit(d.getDate());
         var s = d.getFullYear() + "/" + (d.getMonth()+1).toString().padLdft(2, "0") +"/"+ make2digit(d.getDate());
+                                                            //padLdft 최대채우고자하는 길이
         alert(s);
 
         //getDay - 일: 0 ~ 토:6
@@ -263,24 +264,24 @@
     console.log(diff + "ms 걸렸습니다.");   
     }
 
-function foo(){
-  for(var i = 0; i < 1000; i++){
-    console.log(i);
-  }
-}
+    function foo(){
+      for(var i = 0; i < 1000; i++){
+        console.log(i);
+      }
+    }
 
-function test5(){
-  //밀리초단위로 환산후 차이를 구하고, 다시 초/분/시/일 단위로 변환
-  var start = new Date(2020, 9, 28);
-  var now = new Date();
+    function test5(){
+      //밀리초단위로 환산후 차이를 구하고, 다시 초/분/시/일 단위로 변환
+      var start = new Date(2020, 9, 28);
+      var now = new Date();
 
-  var a = start.getTime();//밀리초 1970년1월1일 자정이후로 누적된 밀리초를 반환
-  var b = now.getTime();
+      var a = start.getTime();//밀리초 1970년1월1일 자정이후로 누적된 밀리초를 반환
+      var b = now.getTime();
 
-  var diff = Math.floor((b - a) / 1000 / 60 / 60 / 24);
-  alert("개강한지 " + diff + "일이 지났습니다.");
-}
-</script>
+      var diff = Math.floor((b - a) / 1000 / 60 / 60 / 24);
+      alert("개강한지 " + diff + "일이 지났습니다.");
+    }
+    </script>
 
 
 </body>
