@@ -29,7 +29,7 @@
     h3.appendChild(txt);//<h3>안녕하세요</h3>
     var wrap = document.querySelector(".wrap");
     wrap.appendChild(h3);
-  }
+    }
     </script>
 
     <h2>요소 traversing</h2>
@@ -54,14 +54,14 @@
     */
     function test3(){
         var start = document.querySelector("#p3");
-        //var end = start.nextSibling.nextSibling; //p태그도 node이기때문에 한번만쓰면 오류남
-        //var end = start.previousSibling.previousSibling.parentNode; //부모전체node(div)줘라
-       // var end = start.previousSibling.previousSibling.parentNode.firstChild.nextSibling;
-        //첫번째 node 줘라
-       // var end = start.previousSibling.previousSibling.parentNode.childNodes;
-       //var end = start.previousElementSibling; //바로 p태그로 넘어감
-       //var end = start.previousElementSibling.parentNode.firstElementChild;
-       var end = start.previousElementSibling.parentNode.children
+    //     var end = start.nextSibling.nextSibling; //p태그도 node이기때문에 한번만쓰면 오류남
+    //     var end = start.previousSibling.previousSibling.parentNode; //부모전체node(div)줘라
+    //    var end = start.previousSibling.previousSibling.parentNode.firstChild.nextSibling;
+    //     //첫번째 node 줘라
+    //    var end = start.previousSibling.previousSibling.parentNode.childNodes;
+    //    var end = start.previousElementSibling; //바로 p태그로 넘어감
+    //   var end = start.previousElementSibling.parentNode.firstElementChild;
+    //    var end = start.previousElementSibling.parentNode.children
         console.log(end);
         end.style.color = "hotpink";
 

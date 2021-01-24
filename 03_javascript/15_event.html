@@ -70,7 +70,9 @@
     <h2>event 객체 | event target객체</h2>
     <div id="test"></div>
     <!--event inline속성에 핸들러 바인딩하는 경우, event매개인자값은 event고정-->
-    <input type="text" id="userInput" onkeypress="checkString(event);"><!--Alt+Shift+A -->
+    <input type="text" id="userInput" onkeypress="checkString(event);">
+    <!--Alt+Shift+A -->
+    <!-- onkeypress 키를 누르고있을때 -->
     <style>
     div#test {
         width: 200px;
@@ -100,6 +102,7 @@
      *    event가 발생한 태그요소
      */ 
     test.onmouseover = function(e){
+    //onmouseover(마우스가 객체 위에 올라왔을 때)
         console.log(e);
 
        // e.target.style.backgroundColor = "springgreen";
@@ -109,8 +112,9 @@
     };
 
     test.onmouseout = function(e){
+    //onreset(Reset 버튼을 눌렀을 때)
     e.target.style.backgroundColor = 'skyblue';
-  }; //밖 클릭시 색변환
+    }; //밖 클릭시 색변환
     </script>
 
     <p>

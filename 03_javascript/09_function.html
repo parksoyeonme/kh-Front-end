@@ -75,17 +75,17 @@
     <script>
     /**
      * 변수는 공간 인자는 값
-     * 매개변수 parameter: 함수선언부에 값(매개인자)이 전달된 공간
-     * 매개인자 argument: 함수호출부에 전달되는 값
+     * 매개변수 parameter: 함수선언부에 값(매개인자)이 전달된 공간 ->기본undefined,함수 정의 시 나열되는 변수(variable)
+     * 매개인자 argument: 함수호출부에 전달되는 값 ->함수를 호출할때 전달되는 실제 값
      * 
      * 자바스크립트에서는 선언부(매개변수)와 호출부(매개인자)가 일치하지 않아도 오류가 발생하지 않는다.
      */ 
-    function test1(a, b){
+    function test1(a, b){ //a,b가 매개변수
         console.log("a = " + a);
         console.log("b = " + b);
 
         //숨겨진 참조 arguments 매개인자를 유사배열로 가지고 있다.
-       // console.log(arguments); //우리가 선언하지않아도 가지고있다.
+       // console.log(arguments); //우리가 선언하지않아도 가지고있다. 
        for(var i = 0; i < arguments.length; i++){
            console.log(i + " : " + arguments[i]);
        }
