@@ -124,24 +124,24 @@
     $(".box li:has(a)").css("background-color", "hotpink");
   }); //a태그를 가진것 -> 테스트4
   
-  $(btn10).click(function(){
-    $(".box li:eq(1)").css("font-family", "궁서, cursive");
-  });
-  
-  $(btn11).click(function(){
-    $(".box li:lt(3)").css("color", "springgreen");
-  });
-
   $(btn12).click(function(){
     $(".box li:gt(1)").css("text-decoration", "line-through");
   });
 
+  $(btn11).click(function(){
+    $(".box li:lt(3)").css("color", "springgreen");
+  });
+
+  $(btn10).click(function(){
+    $(".box li:eq(1)").css("font-family", "궁서, cursive");
+  });
+
   $("#btn9").click(function(){
     console.log($(".box li"));
-    // $(".box li:first").css("color", "orangered");
+    $(".box li:first").css("color", "orangered");
     // $(".box li:last").css("background-color", "orangered");
     // $(".box li:odd").css("background-color", "orangered");
-    $(".box li:even").css("background-color", "orangered");
+    // $(".box li:even").css("background-color", "orangered");
   });
   </script>
 

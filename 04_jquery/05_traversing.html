@@ -67,7 +67,7 @@
         </div>
         
     </div> <!-- end of . wrap -->
-    <h2>1.부몬 메소드</h2>
+    <h2>1.부모 메소드</h2>
     <input type="button" value="parent()" id="btn1">
     <input type="button" value="parents()" id="btn2">
     <input type="button" value="parentsUntil()" id="btn3">
@@ -192,7 +192,7 @@
      $(btn9).click(function(){
         $(".wrap h2")
         //.prev()
-        //.prevAll()
+       // .prevAll()
         .prevUntil('span') //h2이전형제 중 span전까지
         .css(style);
     }); 
