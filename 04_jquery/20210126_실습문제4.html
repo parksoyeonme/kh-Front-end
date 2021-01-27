@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>jQuery_04_event_실습</title>
-    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
 </head>
 <body>
     <h2>Practice</h2>
     <script>
         $(function(){
-        
-		});
+            var len = $("#number").children().length;
+            console.log("length : "+len);
+            $(document).on("mouseenter", "#number", function(){
+                $(this).children().each(function(){
+                    console.log($(this).attr("class"));
+                });
+            });
+        });
     </script>
     <ul id="number">
         <li class="n1">1</li>
@@ -26,7 +32,10 @@
     <h2>Event 1</h2>
     <script>
         $(document).ready(function(){
-
+            $("select").change(function(){
+                var data = $("select option:selected").html();
+                $("#selNum").text(data);
+            });
         });
     </script>
     
@@ -44,7 +53,12 @@
     <h2>Event 2</h2>
     <script>
         $(document).ready(function(){
-
+            $("#event2 tr").on("click",function(){
+                    var objectArr = $(this).children(); //클릭한 요소의 후손들을 가져옴 (배열화)
+                    $.each(objectArr,function(index,item){	// .each를 통해 가져온 횟수만큼 작동
+                        $("span").eq(index).html(item.innerHTML);
+                    });
+            });
         });
     </script>
     
@@ -63,7 +77,14 @@
     <h2>Event 3</h2>
     <script>
     $(document).ready(function(){
-		
+        $("#event3 tr").on("click",function(){
+                var objectArr = $(this).children(); //클릭한 요소의 후손들을 가져옴 (배열화)
+                $.each(objectArr,function(index,item){	// .each를 통해 가져온 횟수만큼 작동
+                    $("span").eq(index).html(item.innerHTML);
+                });
+                $("#event3 tr").css("background","white");
+                $(this).css("background","red");
+        });
     });
     </script>
 
