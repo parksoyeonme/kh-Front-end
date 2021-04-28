@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>let | const</h1>
+
+<script>
+//var 함수스코프, 문법유효성검사 기능 없음, hoisting
+//let 일반변수선언, 블럭스코프, 문법유효성검사 기능있음
+//const 상수선언, 블럭스코프, 문법유효성검사 기능 있음
+//내가 아는 한 변경될리가 없어 const, 변경된다 let
+
+let a = 100;
+const b = 200;
+
+//let a = 3; //Uncaught SyntaxError: Identifier 'a' has already been declared
+//동일한 변수명은 불가하다
+//b = 3; //Uncaught TypeError: Assignment to constant variable. hoisting이 없어서
+//상수한테 값을 또 지정해서//
+console.log(`a = ${a}`);
+console.log(`b = ${b}`);
+
+
+var x = 200;
+if(true){
+    var x = 300;
+    //var는 함수안에서만 밖에 있는 var는 함수밖이므로 무시해라
+}
+console.log(x); //300
+
+let y = 7;
+if(true){
+    let y = 8;
+    //변수의 생명주기가 블럭안에 갇혀있어서, 변수가 살아있을때에만 가능
+}
+console.log(y); //7
+
+</script>
+</body>
+</html>
