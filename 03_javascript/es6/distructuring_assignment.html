@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distructuring Assignment</title>
+</head>
+<body>
+    <h1>Distructuring Assignment</h1>
+    <h2>array</h2>
+<script>
+function destructureArray(){
+    //구조분해할당 : 배열 또는 객체의 값을 변수에 쉽게 옮겨담는 기술
+    const arr = [1,2,3,4,5];
+    //const a = arr[0];
+    //const b = arr[1];
+    //위의 두줄과 아래 한줄은 동일
+    //뺄수없고 순서대로 작성해야함
+
+    //5번이 f에 사용되는 숫자가 없다면 기본값 ㅋㅋㅋ를 사용해라
+    //a는 값 1이 들어있으므로 ㅎㅎㅎ대신 1이 나온다
+    const [a = 'ㅎㅎㅎ', b, c, d, e, f='ㅋㅋㅋ'] = arr;
+    console.log(`a = ${a}, b = ${b}, c = ${c}, d = ${d}, e = ${e}, f = ${f}`);
+    //a = 1, b = 2, c = 3, d = 4, e = 5, f = ㅋㅋㅋ
+
+    //변수 값 교환
+    let x = 3;
+    let y = 7;
+    //x = y;
+    //y = x; //이상태는 7 = 7 로 출력
+    [x, y] =[y, x];
+    console.log(`x = ${x}, y = ${y}`);
+    //x = 7, y = 3
+
+
+    //나머지파라미터 RestParameter : 할당되지 않은 요소를 배열에 할당
+    const names = ['홍길동', '신사임당', '이순신', '윤봉준'];
+   // const [ho, si, le, yb] = names;
+   //이 상태로 할 수 있지만 하나씩 다 치기 어려움으로
+   
+   //...rest 에 나머지 요소들을 담은것
+    const [ho, ...rest] = names;
+
+    console.log(`ho = ${ho}, rest = ${rest}`);
+    //ho = 홍길동, rest = 신사임당,이순신,윤봉준
+
+    //리턴값 활용
+    const foo = () => {
+        return [3, 5, 7];
+    }
+    console.log(foo());
+    console.log(typeof foo());
+
+    const[n1, n2] = foo();
+    console.log(`n1 = ${n1}, n2 = ${n2}`);
+    //n1 = 3, n2 = 5
+
+
+    //매개인자 활용
+    const bar = ([x,y, ...rest]) => {
+        console.log(`x = ${x}, y = ${y}, rest = ${rest}`);
+    };
+    bar([9,8,7,6,5]);
+    //x = 9, y = 8, rest = 7,6,5
+    bar(9,8,7,6,5); //배열로 담아야 해서 이거는 안나온다
+};
+</script>
+
+<h2>object</h2>
+<script>
+const user = {
+    id: "honggd",
+    name: "홍길동",
+    hobby: ['축구', '농구'],
+    age: 35,
+    item: {
+        car: "소나타",
+        phone: {
+            number: "01012341234"
+        }
+    }
+};
+
+//const id = user.id;
+//const name = user.name;
+
+const {id, name, profession = [], item:{car}, item:{phone:{number}}} = user;
+//item:{car}, item:{phone:{number}} = item: {car, phone: {number}}
+console.log(`id =${id}, name=${name}, profession = ${profession}`);
+//id =honggd, name=홍길동
+//해당 속성이 없을 떄 id =honggd, name=홍길동, profession = undefined
+//기본값 줄 수 있다. id =honggd, name=홍길동, profession = 취준
+//console.log(`item = ${item}`); //Uncaught ReferenceError: item is not defined
+console.log(`car = ${car}, number = ${number}`);
+
+const coffee = {
+    name: "안티구아",
+    place: "과테말라",
+    taste: ["견과", "초콜렛"]
+  }
+
+  //객체 가아니라 배열이네? //topTaste = 견과 -> 배열 구조분해
+  const {name: coffeeName, place, taste:[topTaste]} = coffee;
+  //새로부여할 변수명 name: coffeeName
+  console.log(`coffeeName = ${coffeeName}, place = ${place}, topTaste = ${topTaste}`);
+
+  //나머지 파라미터
+  const{name: variety, ...coffeeRest} = coffee;
+  console.log(`variety = ${variety}`);
+  console.log(coffeeRest);
+
+  //리턴객체를 활용
+  const koo = () => ({
+    position: {
+        x: 234,
+        y: 0.456
+    },
+    radius : 3,
+    color: "black"
+
+  });
+  //console.log(koo());
+
+  //border 기본값 1
+  const {position:{x, y}, color, border="1"} = koo();
+  console.log(`x = ${x}, y = ${y}, color = ${color}, border = ${border}`);
+
+  const handleUserWithId = ({id}) => {
+    console.log(id);
+  }
+  handleUserWithId(user);
+
+  const handlerUserWithHobby = ({hobby}) => {
+    //hobby를 순회 출력
+   // hobbies.forEach((hobby, index, hobbies) => console.log(hobby, index, hobbies));
+   // hobby.forEach(console.log);
+   for(let i = 0; i < hobby.length; i++){
+      console.log(hobby[i]);
+   }
+   for(let i in hobby)
+      console.log(hobby[i]);
+  }
+  handlerUserWithHobby(user);
+
+</script>
+<input type="search" id="query" placeholer="검색...">
+  <script>  
+  //#query의 사용자입력값을 keyup이벤트핸들러에서 콘솔출력하세요.
+  //사용자입력값 event.target.value (구조분해할당 활용)
+  const query = document.querySelector("#query");
+  query.addEventListener('keyup', ({target: {value}}) => {
+    console.log(value);
+  });
+  </script>
+
+</body>
+</html>
